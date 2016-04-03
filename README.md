@@ -1,4 +1,4 @@
-# TemperatureCharacterizationTool
+# MultipleEggPlotter
 
 Getting started
 ================

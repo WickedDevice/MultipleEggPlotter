@@ -1,0 +1,49 @@
+doctype html
+html(lang="en", ng-app="MyApp")
+  head
+    meta(charset="utf-8")
+    meta(http-equiv="X-UA-Compatible", content="IE=edge")
+    meta(name="viewport", content="width=device-width, initial-scale=1")
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    base(href="/")
+    title= title
+    <!-- Bootstrap -->
+    link(href="css/bootstrap.min.css", rel="stylesheet")
+    link(href="css/bootstrap-theme.css", rel="stylesheet")
+    link(rel='stylesheet', href='stylesheets/style.css')
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    script(src="html5shiv.min.js")
+    script(src="respond.min.js")
+    <![endif]-->
+  body
+    div.container
+      block content
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    script(type="text/javascript", src="jquery.min.js")
+    script(type="text/javascript", src="angular.min.js")
+    script(type="text/javascript", src="angular-route.min.js")
+    script(type="text/javascript", src="angular-resource.min.js")
+    <!-- for no html5 browsers support -->
+    script(type="text/javascript", src="ng-file-upload-shim.min.js")
+    script(type="text/javascript", src="ng-file-upload.min.js")
+
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    script(type="text/javascript", src="js/bootstrap.min.js")
+    script(type="text/javascript", src="plotly.min.js")
+    script(type="text/javascript", src="moment.min.js")
+
+    <!-- App -->
+    script(type="text/javascript", src="javascripts/app.js")
+    script(type="text/javascript", src="javascripts/routes.js")
+
+    <!-- Directives -->
+
+    <!-- Controllers -->
+    script(type="text/javascript", src="javascripts/controllers/uploadController.js")
+
+    <!-- Filters -->
+
+    <!-- Services -->

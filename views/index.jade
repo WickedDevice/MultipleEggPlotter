@@ -1,0 +1,31 @@
+extends layout
+
+block content
+  div(ng-controller="UploadCtrl")
+    div.row
+      div.drop-box.col-md-4.col-md-offset-4(ngf-drop="uploadFiles($files)", ngf-drag-over-class="'dragover'", ngf-multiple="true", ngf-pattern="'text/csv'") Drop a CSV file here
+      div.drop-box.col-md-4.col-md-offset-4(ngf-no-file-drop) File Drag/Drop is not supported for this browser
+    div.row
+      span.col-md-4.col-md-offset-4.progress(ng-show="progress >= 0")
+        div(style="width:{{progress}}%", ng-bind="progress + '%'")
+    form
+      div.row.form-group
+        div.col-md-12.text-center
+          button.btn.btn-primary(style="margin-left:10px;", type="button", ngf-select="uploadFiles($files)", multiple="multiple") Select Files Dialog
+      div.row.form-group
+        div.col-md-5.col-md-offset-1.text-right
+          span(ng-show="header_loaded()") Primary Plot: &nbsp;
+          select.c-select(ng-model="primary_column", ng-options="obj.idx as obj.name for obj in csv_header_row_reduced", ng-show="header_loaded()", ng-change="primary_column_change()")
+        div.col-md-5.text-left
+          button.btn.btn-info(style="margin-left:10px;", type="button", ng-show="header_loaded()", ng-click="addToPlotPrimary()") Add To Plot
+          button.btn.btn-danger(style="margin-left:10px;", type="button", ng-show="header_loaded()", ng-click="removeFromPlotPrimary()") Remove From Plot
+      div.row.form-group
+        div.col-md-5.col-md-offset-1.text-right
+          span(ng-show="header_loaded()") Secondary Plot: &nbsp;
+          select.c-select(ng-model="secondary_column", ng-options="obj.idx as obj.name for obj in csv_header_row_reduced", ng-show="header_loaded()", ng-change="secondary_column_change()")
+        div.col-md-5.text-left
+          button.btn.btn-info(style="margin-left:10px;", type="button", ng-show="header_loaded()", ng-click="addToPlotSecondary()") Add To Plot
+          button.btn.btn-danger(style="margin-left:10px;", type="button", ng-show="header_loaded()", ng-click="removeFromPlotSecondary()") Remove From Plot
+
+    div.row
+      div#scatterplot.col-md-12(style="height: 600px;")

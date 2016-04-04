@@ -114,12 +114,13 @@ router.post('/upload', multipartyMiddleware, function(req, res, next) {
     var merged_data = []; // this will be an array of rows when we're done
 
     // make a mega-header row, with header rows from the original files prefixed by the original filename
-    var mega_header_row = [];
+    var mega_header_row = ["timestamp"];
     var dummy_row = {};
     for(var ii = 0; ii < analyzedParsedCsvData.length; ii++){
       if(analyzedParsedCsvData[ii].rows && analyzedParsedCsvData[ii].rows.length > 0) {
         dummy_row[analyzedParsedCsvData[ii].filename] = [];
-        for (var jj = 0; jj < analyzedParsedCsvData[ii].rows[0].length; jj++) {
+        for (var jj = 1; jj < analyzedParsedCsvData[ii].rows[0].length; jj++) {
+          // we should only generate a header entry for one timestam
           mega_header_row.push(analyzedParsedCsvData[ii].filename + "-" + analyzedParsedCsvData[ii].rows[0][jj]);
           dummy_row[analyzedParsedCsvData[ii].filename].push("---");
         }
@@ -207,7 +208,7 @@ router.post('/upload', multipartyMiddleware, function(req, res, next) {
             else{
               // there's no candidate row... file in blanks for this set of headers
               var row = dummy_row[analyzedParsedCsvData[ii].filename];
-              mega_row = mega_row.concat(row.slice(1, row.length));
+              mega_row = mega_row.concat(row);
             }
           }
         }

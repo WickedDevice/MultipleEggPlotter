@@ -214,8 +214,10 @@ angular.module('MyApp', ['ngFileUpload'])
           };
 
           if(layout.title){
-            layout.title += " and " + $scope.secondary_axis_title;
+            layout.title += " and ";
           }
+
+          layout.title += $scope.secondary_axis_title;
         }
 
         if(layout.title){

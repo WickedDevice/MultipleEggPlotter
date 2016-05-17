@@ -35,6 +35,9 @@ router.post('/upload', multipartyMiddleware, function(req, res, next) {
   }).map(function(obj){
     // parse the file contents as CSV
     var fileContents = obj.contents;
+    fileContents = fileContents.toString().replace(/\r?\n/g, "\r\n");
+
+
     var obj = { filename: obj.filename };
     return Promise.try(function(){
       return csvparse(fileContents);

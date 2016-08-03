@@ -124,7 +124,7 @@ router.post('/upload', multipartyMiddleware, function(req, res, next) {
         dummy_row[analyzedParsedCsvData[ii].filename] = [];
         for (var jj = 1; jj < analyzedParsedCsvData[ii].rows[0].length; jj++) {
           // we should only generate a header entry for one timestam
-          mega_header_row.push(analyzedParsedCsvData[ii].filename + "-" + analyzedParsedCsvData[ii].rows[0][jj]);
+          mega_header_row.push(analyzedParsedCsvData[ii].filename + "$$" + analyzedParsedCsvData[ii].rows[0][jj]);
           dummy_row[analyzedParsedCsvData[ii].filename].push("---");
         }
       }

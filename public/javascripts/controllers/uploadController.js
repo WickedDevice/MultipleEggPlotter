@@ -173,7 +173,7 @@ angular.module('MyApp', ['ngFileUpload'])
               mode: 'lines+markers',
               yaxis: 'y',
               type: 'scatter',
-              name: $scope.csv_header_row[column].name.split("$$")[0].split(".")[0]
+              name: $scope.csv_header_row[column].name.split("$$")[0].split(".")[0] + ($scope.secondary_columns && $scope.primary_columns ? '[' + $scope.csv_header_row[column].name.split("$$")[1] + ']' : '')
             };
             data.push(trace);
           }
@@ -192,7 +192,7 @@ angular.module('MyApp', ['ngFileUpload'])
               mode: 'lines+markers',
               yaxis: 'y2',
               type: 'scatter',
-              name: $scope.csv_header_row[column].name.split("$$")[0].split(".")[0]
+              name: $scope.csv_header_row[column].name.split("$$")[0].split(".")[0] + ($scope.secondary_columns && $scope.primary_columns ? '[' + $scope.csv_header_row[column].name.split("$$")[1] + ']' : '')
             };
             data.push(trace);
           }

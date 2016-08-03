@@ -103,7 +103,7 @@ angular.module('MyApp', ['ngFileUpload'])
                     $scope.csv_header_row_reduced = {};
                     for(var ii = 0; ii < $scope.csv_header_row.length; ii++){
                       var name = $scope.csv_header_row[ii].name;
-                      var rhs = name.split('-');
+                      var rhs = name.split('$$');
                       if(rhs.length > 1){
                         $scope.csv_header_row_reduced[rhs[1]] = 1;
                       }

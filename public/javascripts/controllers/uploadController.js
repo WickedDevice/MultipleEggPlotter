@@ -173,7 +173,7 @@ angular.module('MyApp', ['ngFileUpload'])
               mode: 'lines+markers',
               yaxis: 'y',
               type: 'scatter',
-              name: $scope.csv_header_row[column].name
+              name: $scope.csv_header_row[column].name.split("$$")[0].split(".")[0]
             };
             data.push(trace);
           }
@@ -192,7 +192,7 @@ angular.module('MyApp', ['ngFileUpload'])
               mode: 'lines+markers',
               yaxis: 'y2',
               type: 'scatter',
-              name: $scope.csv_header_row[column].name
+              name: $scope.csv_header_row[column].name.split("$$")[0].split(".")[0]
             };
             data.push(trace);
           }

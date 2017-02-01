@@ -17,9 +17,15 @@ router.get('/', function(req, res, next) {
 router.post('/upload', multipartyMiddleware, function(req, res, next) {
   // We are able to access req.files.file thanks to
   // the multiparty middleware
+  console.log("upload received");
   var files = req.files.files;
   var orig_dest = __dirname.replace(/\\/g,"/");
   var dest = orig_dest.split("/").slice(0, -1).join("/") + "/uploads/" + files[0].originalFilename;
+
+  if(files && !files.length){
+    console.log("Reshaping files into array");
+    files = Object.keys(files).map(k => files[k]);
+  }
 
   return Promise.try(function() {
     return files;

@@ -181,7 +181,7 @@ router.post('/upload', multipartyMiddleware, function(req, res, next) {
               var row_timestamp = row[0];
 
               // stop searching this file if you encounter a time that occurs after the end of the window
-              if (!row_timestamp.isAfter){
+              if (!row_timestamp || (row_timestamp && !row_timestamp.isAfter)){
                 continue; // skip rows that don't have a well formed timestamp
               }
               if (row_timestamp.isAfter(end_of_window)) {
